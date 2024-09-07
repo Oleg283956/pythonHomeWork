@@ -1,8 +1,6 @@
 def divide(x,y):
-    res = 0
+    res = 'Ошибка'
     if y != 0:
         res = x/y
-        return res
-    else:
-        return 'Ошибка'
+    return res
 

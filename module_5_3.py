@@ -17,9 +17,8 @@ class House:
         return self.number_of_floors
 
     def __add__(self, other):
-        if isinstance(self, House) and isinstance(other,int):
-             self.number_of_floors = self.number_of_floors + other
-             return House(self.name,self.number_of_floors)
+        self.number_of_floors = self.number_of_floors + other
+        return House(self.name,self.number_of_floors)
 
     __iadd__ = __add__
 

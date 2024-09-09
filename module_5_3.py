@@ -12,11 +12,9 @@ class House:
                  print('"Такого этажа не существует"')
 
     def __str__(self):
-        if isinstance(self,House):
             return f'Название: {self.name}, кол-во этажей: {self.number_of_floors}'
 
     def __len__(self):
-        if isinstance(self,House):
             return self.number_of_floors
 
     def __add__(self, other):

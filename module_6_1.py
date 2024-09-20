@@ -3,64 +3,48 @@ class Animal():
     fed = False
     name = ''
 
+    def __init__(self,name):
+        self.name = name
+
+    def eat(self, food):
+        self.food = food
+        self.res = ''
+        str_sjel = ' съел '
+        if isinstance(self.food,Fruit):
+            if self.food.edible == True:
+                self.fed = True
+            else:
+                self.alive = False
+                str_sjel = ' не стал есть '
+        if isinstance(self.food,Flower):
+            if self.food.edible == True:
+                self.fed = True
+            else:
+                self.alive = False
+                str_sjel = ' не стал есть '
+        self.res = str(self.name) +str_sjel+ str(self.food.name)
+        print(self.res)
+
+
+
 class Plant:
     edible = False
     name = ''
+    def __init__(self,name):
+        self.name = name
+
 
 class Mammal(Animal):
-    def __init__(self,name):
-        self.name = name
-
-    def eat(self, food):
-        self.food = food
-        self.res = ''
-        str_sjel = ' съел '
-        if isinstance(self.food,Fruit):
-            if self.food.edible == True:
-                self.fed = True
-            else:
-                self.alive = False
-                str_sjel = ' не стал есть '
-        if isinstance(self.food,Flower):
-            if self.food.edible == True:
-                self.fed = True
-            else:
-                self.alive = False
-                str_sjel = ' не стал есть '
-        self.res = str(self.name) +str_sjel+ str(self.food.name)
-        print(self.res)
+    pass
 
 class Predator(Animal):
-    def __init__(self,name):
-        self.name = name
-
-    def eat(self, food):
-        self.food = food
-        self.res = ''
-        str_sjel = ' съел '
-        if isinstance(self.food,Fruit):
-            if self.food.edible == True:
-                self.fed = True
-            else:
-                self.alive = False
-                str_sjel = ' не стал есть '
-        if isinstance(self.food,Flower):
-            if self.food.edible == True:
-                self.fed = True
-            else:
-                self.alive = False
-                str_sjel = ' не стал есть '
-        self.res = str(self.name) +str_sjel+ str(self.food.name)
-        print(self.res)
+    pass
 
 class Flower(Plant):
-    def __init__(self,name):
-        self.name = name
+    pass
 
 class Fruit(Plant):
     edible = True
-    def __init__(self,name):
-        self.name = name
 
 a1 = Predator('Волк с Уолл-Стрит')
 a2 = Mammal('Хатико')

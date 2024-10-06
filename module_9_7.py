@@ -2,7 +2,7 @@ def is_prime(func):
     def wrapper(*args,**kwargs):
         original_result = func(*args,**kwargs)
         resultTMP = 'Простое' +'\n'+str(original_result)
-        if original_result > 2:
+        if original_result > 2 and isinstance(original_result,int):
             for i in range(2,original_result):
                 if original_result%i == 0:
                     resultTMP = 'Составное' +'\n'+str(original_result)

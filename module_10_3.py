@@ -50,4 +50,6 @@ th1.start()
 th2.start()
 th1.join()
 th2.join()
+print(f'Итоговый баланс: {bk.balance}')
+
 

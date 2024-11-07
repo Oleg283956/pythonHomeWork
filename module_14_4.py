@@ -34,7 +34,7 @@ kbInl1.add(butt1Inl1,butt1Inl2,butt1Inl3,butt1Inl4)
 #--------- END КЛАВЫ ------------------
 
 
-api = '8174421972:AAH_yisAafbctNnPOMFEE7HI8Dy0_K9PZbQ'
+api = ''
 bot = Bot(token=api)
 dp = Dispatcher(bot,storage = MemoryStorage())
 

@@ -2,8 +2,43 @@ import sqlite3
 connection = sqlite3.connect('bot_db.db')
 cursor = connection.cursor()
 
-
 def initiate_db():
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS Users (
+    id INTEGER PRIMARY KEY,
+    username TEXT NOT NULL,
+    email TEXT NOT NULL,
+    age INTEGER NOT NULL,
+    balance INTEDER NOT NULL
+    );
+    ''')
+    connection.commit()
+
+
+def is_included(username):
+    connection = sqlite3.connect('bot_db.db')
+    cursor = connection.cursor()
+    cursor.execute('SELECT* FROM Users WHERE username=?',(f'{username}',))
+    total3 = cursor.fetchmany(size=cursor.arraysize)
+    res = False
+    if len(total3) > 0:
+        res = True
+    return res
+
+
+def add_user(username, email, age):
+    connection = sqlite3.connect('bot_db.db')
+    cursor = connection.cursor()
+    bal = 1000
+    cursor.execute('INSERT INTO Users(username,email,age,balance) VALUES(?,?,?,?)',(f'{username}',f'{email}',f'{age}',f'{bal}'))
+    connection.commit()
+    connection.close()
+
+
+
+
+
+def initiate_db_prod():
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS Products (
     id INTEGER PRIMARY KEY,
@@ -13,6 +48,34 @@ def initiate_db():
     );
     ''')
     connection.commit()
+
+
+def get_all_users():
+    connection = sqlite3.connect('bot_db.db')
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM Users')
+    userss = cursor.fetchall()
+    l_all = []
+    for user in userss:
+        l_all.append(list(user))
+    print(l_all)
+    return l_all
+    connection.commit()
+    connection.close()
+
+def dell_all_users():
+    connection = sqlite3.connect('bot_db.db')
+    cursor = connection.cursor()
+    cursor.execute('SELECT* FROM Users')
+    userss = cursor.fetchall()
+    l_all = []
+    for user in userss:
+        cursor.execute('DELETE FROM Users')
+    connection.commit()
+    connection.close()
+
+#dell_all_users()
+#get_all_users()
 
 
 def get_all_products():
